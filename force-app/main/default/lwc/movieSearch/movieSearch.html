@@ -4,12 +4,12 @@
       <lightning-layout horizontal-align="center">
           <lightning-layout-item padding = "around-small" size="3">
             <lightning-combobox
-            name="type"
-            label="Type"
-            placeholder="Selected Type"
-            value={SelectedType}
-            onchange={handleChange}
-            options={typeOptions}
+                name="type"
+                label="Type"
+                placeholder="Selected Type"
+                value={SelectedType}
+                onchange={handleChange}
+                options={typeOptions}
             ></lightning-combobox>
           </lightning-layout-item>
 
@@ -49,16 +49,15 @@
           <lightning-layout horizontal-align="center" multiple-rows="true">
             <template for:each={searchResults} for:item="searchItem">
               <lightning-layout-item 
-                size ="3" 
-                padding="around-
-                medium"
-                key= {searchItem.imdbID}>
-
-                <c-movie-tile 
-                  movie={searchItem}
-                  onselectedmovie={movieSelectedHandler}
-                  selected-movie-id={selectedMovie}>
-               </c-movie-tile>
+                  size ="3" 
+                  padding="around-small"
+                  key= {searchItem.imdbID}>
+                  <c-movie-tile 
+                    movie={searchItem}
+                    onselectedmovie={movieSelectedHandler}
+                    selected-movie-id={selectedMovie}
+                   >
+                </c-movie-tile>
               
               </lightning-layout-item>
               </template>    

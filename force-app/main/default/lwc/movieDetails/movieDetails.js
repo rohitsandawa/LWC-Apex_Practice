@@ -7,6 +7,7 @@ import {
 } from 'lightning/messageService';
 import MOVIE_CHANNEL from '@salesforce/messageChannel/movieChannel__c';
 
+const API_KEY="940ea210";
 export default class MovieDetails extends LightningElement {
    subscription = null;
    loadComponent = false;
@@ -20,7 +21,6 @@ export default class MovieDetails extends LightningElement {
     connectedCallback() {
         this.subscribeToMessageChannel();
     } 
-
     disconnectedCallback() { 
         this.unsubscribeToMessageChannel();
     } 
@@ -48,10 +48,9 @@ export default class MovieDetails extends LightningElement {
         this.subscription = null;
     }
 
-  
       async fetchMovieDetails(movieId) {
          console.log('Fetching details for:', movieId);
-        let url = `https://www.omdbapi.com/?i=${movieId}&plot=full&apikey=940ea210`;
+        let url = `https://www.omdbapi.com/?i=${movieId}&plot=full&apikey=${API_KEY}`;
         try {
             const response = await fetch(url);
             const data = await response.json();

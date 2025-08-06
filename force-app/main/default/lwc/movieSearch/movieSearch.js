@@ -5,6 +5,7 @@ import MOVIE_CHANNEL from '@salesforce/messageChannel/movieChannel__c';
 
 
 const DELAY = 500;
+const API_KEY="940ea210";
 export default class MovieSearch extends LightningElement {
     SelectedType = '';
     SelectedSearch = '';
@@ -21,8 +22,7 @@ export default class MovieSearch extends LightningElement {
         return [
             { label: 'None', value: '' },
             { label: 'Movie', value: 'movie' },
-            { label: 'Series', value: 'series' },
-            { label: 'Episode', value: 'episode' }
+            { label: 'Series', value: 'series' }
         ];
     }
 
@@ -31,18 +31,18 @@ export default class MovieSearch extends LightningElement {
 
         if (name === 'type') {
             this.SelectedType = value;
-        } else if (name === 'search') {
-            this.SelectedSearch = value;
-        } else if (name === 'pageno') {
-            this.SelectedPageNo = value;
-        }
+            } else if (name === 'search') {
+                this.SelectedSearch = value;
+                } else if (name === 'pageno') {
+                    this.SelectedPageNo = value;
+                }
 
         // Clear previous timeout to debounce properly
         if (this.delayTimeout) {
             clearTimeout(this.delayTimeout);
         }
 
-        this.delayTimeout = setTimeout(() => {
+        this.delayTimeout = setTimeout(() => { 
             this.searchMovie();
         }, DELAY);
     }
@@ -56,8 +56,7 @@ export default class MovieSearch extends LightningElement {
         }
 
         this.loading = true;
-
-        const url = `https://www.omdbapi.com/?s=${this.SelectedSearch}&type=${this.SelectedType}&page=${this.SelectedPageNo}&apikey=940ea210`;
+        const url = `https://www.omdbapi.com/?s=${this.SelectedSearch}&type=${this.SelectedType}&page=${this.SelectedPageNo}&apikey=${API_KEY}`;
 
         try {
             const res = await fetch(url);
@@ -82,7 +81,6 @@ export default class MovieSearch extends LightningElement {
 
      movieSelectedHandler(event) {
         this.selectedMovie = event.detail;
-        console.log(`Parent Component : ${this.selectedMovie}`);
         const payload = { movieId: this.selectedMovie };
 
         publish(this.messageContext, MOVIE_CHANNEL, payload);

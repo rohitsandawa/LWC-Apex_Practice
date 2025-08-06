@@ -1,4 +1,4 @@
-.movie-poster img{
+ .movie-poster img{
     max-width: 200px;
     border: 4px solid white;
     border-radius:5px;
@@ -23,7 +23,7 @@
 }
 
 b{
-    color: yellow;
+    color: rgb(230, 230, 170);
     font-style: italic;
 }
 
@@ -35,4 +35,3 @@ p{
     max-width: 400px;
     margin-left: 0;
 }
-

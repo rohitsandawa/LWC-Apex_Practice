@@ -5,7 +5,6 @@ export default class MovieTile extends LightningElement {
   @api selectedMovieId;
 
   clickHandler(event){
-    console.log( 'from tile js imdbID',this.movie.imdbID);
     // use custom event 
     const evt = new CustomEvent("selectedmovie",{
       detail: this.movie.imdbID
@@ -15,7 +14,7 @@ export default class MovieTile extends LightningElement {
      this.dispatchEvent(evt);
   }
 
-  // get tileSelected(){
-  //   return this.selecteMovieId===this.movie.imdbID?'tile selected':'tile';
-  // }
+   get tileSelected(){
+     return this.selectedMovieId===this.movie.imdbID?'tile selected':'tile';
+   }
 }
