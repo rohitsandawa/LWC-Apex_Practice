@@ -1,0 +1,21 @@
+<template>
+
+    <template if:true={accounts}>
+        <template for:each={accounts} for:item="acc">
+            <div key={acc.id} class="slds-box slds-m-around_small">
+                <p><b>{acc.Name}</b></p>
+
+                <lightning-input type="text" label="Phone" value={acc.Phone} data-id={acc.Id}
+                    onchange={handlePhoneChange} class="slds-m-around_medium"></lightning-input>
+
+                <lightning-button variant="brand" label="Save" data-id={acc.Id} onclick={handleSave}
+                    class="slds-m-around_medium"></lightning-button>
+
+            </div>
+        </template>
+    </template>
+
+    <template if:true={error}>
+        <p>{error.body.message}</p>
+    </template>
+</template>
