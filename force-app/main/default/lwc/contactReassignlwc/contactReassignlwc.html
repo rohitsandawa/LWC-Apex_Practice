@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title="Reassign Contacts">
+        <div class="slds-m-around_medium">
+            <lightning-input 
+                type="text" 
+                label="New Owner Id" 
+                onchange={handleOwnerChange}>
+            </lightning-input>
+
+            <lightning-button 
+                class="slds-m-top_small"
+                label="Reassign Contacts"
+                onclick={handleReassign}
+                variant="brand">
+            </lightning-button>
+        </div>
+    </lightning-card>
+</template>
