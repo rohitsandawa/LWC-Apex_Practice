@@ -1,0 +1,20 @@
+<template>
+    <lightning-card title="New Contact" icon-name="standard:contact" >
+          <div class="slds-m-around_medium">
+            <lightning-input label="LastName" value={lastname} onchange={handleChange} data-field="lastname" required></lightning-input>
+            <lightning-input label="Phone" value={phone} onchange={handleChange} data-field="phone" required></lightning-input>
+            <lightning-input label="Email" value={email} onchange={handleChange} data-field="email" required></lightning-input>
+          
+
+           <lightning-button 
+            label = "Save"
+            onclick = {handleSaveButton}
+           >
+           </lightning-button>    
+
+            <template if:true={message}>
+                <p class="slds-m-top_medium">{message}</p>
+            </template>
+         </div>
+    </lightning-card> 
+</template>
