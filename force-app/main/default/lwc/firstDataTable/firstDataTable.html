@@ -1,0 +1,23 @@
+<template>
+  <lightning-card title="Account Data Table" icon-name="standard:account">
+  <template if:true ={accounts}>  
+    <lightning-datatable
+        key-field="Id"
+        data={accounts}
+        columns={columns}
+        draft-values={draftValues}
+        onsave={handleSave}
+        onsort={handleSort}
+        sorted-by={sortedBy}
+        sorted-direction={sortedDirection}
+        hide-checkbox-column
+        show-row-number-column>
+    </lightning-datatable>
+ </template>
+ <template if:true={error}>
+        <p class="slds-text-color_error">
+            Error loading data
+        </p>
+  </template>
+  </lightning-card>
+</template>
